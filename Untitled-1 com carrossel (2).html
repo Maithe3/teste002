@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta  http-equiv="X-AU-compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amigo Saúde</title>
+</head>
+<style>
+    :root
+        {
+            --color--cabecalho:#aed5b4;
+            --color--fundo:#f7e7bb;
+            --color--letras:rgb(0, 0, 0);
+            --color--sombra:rgb(0, 0, 0);           
+            --color--links:rgb(255, 255, 255);
+            --color--caixa_dos_link:rgb(38, 1, 108);
+            --color--branco:#fff;
+            --color--mini_menu:rgb(27, 107, 31);
+            --color--sombra_link:#818181;
+            --color--verdeescuro:rgb(2, 109, 38);
+        }
+        *{
+            margin:0;
+            padding: 0;
+            
+        }
+
+        body
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--color--fundo);
+            color:var(--color--letras);
+            
+        }
+        .img_logo_header
+        {
+            width:50px;
+        }
+        .header,
+        .navegacao_pagina
+        {
+            display:flex;
+            flex-direction:row;
+            align-items: center;
+        }
+        .header{
+            background-color: var(--color--cabecalho);
+            height:50px;
+            justify-content:space-between;
+            padding:0 10%;
+            box-shadow: 1px 1px 25px var(--color--sombra);   
+        }
+        .navegacao_pagina{
+            gap:3em;
+            z-index:2;
+        }
+
+        .navegacao_pagina a {
+            text-decoration: none;
+            color:var( --color--links);  
+            transition: 1s;
+            font-weight:bold;
+             background-color: var(--color--caixa_dos_link);
+             padding: 10px;
+             border-radius:10px ;
+            }
+            .active{
+            background-color:var(--color--sombra_link);
+            border-radius: 10px;
+            padding: 10px; 
+        }
+        .texto1{
+            text-align: center;
+            padding-top: 5em;
+            height: 100vh;
+            transition:1s;
+
+        }
+        .botao_barrinha{
+            background-color:var(--color--branco);
+            padding: 5px;
+             border-radius:10px ;
+             box-shadow: 1px 1px 25px var(--color--sombra);
+             display:none;       
+       }
+       @media screen and (max-width:768px){
+            .botao_barrinha{
+                display:block;
+            }
+                .navegacao_pagina{
+                    position:absolute;
+                    flex-direction: column;
+                    top:0;
+                    background-color:var(--color--mini_menu) ;
+                    height:100%;
+                    width:40vw;
+                    padding: 1em;
+                    animation-duration: 1s;
+                    margin-left: -100vw;
+                }
+                .carrossel{
+            margin-top: 405;
+                }
+               
+                
+       } 
+
+        @keyframes ShowSidebar {
+                    from {margin-left:-100vw;}
+                    top{margin-left: -10vw;}
+             }  
+
+            
+    .texto1
+    {
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align:justify;
+        font-size:130%;
+        background:color var(--color--cabecalho);
+
+        
+ 
+    }
+
+    .texto1 h1, .subtitulos{
+        color:rgb(255, 0, 0);
+        text-align:center;
+            
+
+    }
+    
+
+    .content{
+        
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        padding: 2vh;
+        
+        
+       
+    }
+
+    .content p,.content_esquerda p{
+        margin-right:3%;
+        width: 50%;
+    }
+    
+
+    .content_esquerda{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+   
+    
+    }
+    .content_esquerda p{
+        margin-left:3%;
+        width:60%;
+       
+    }
+
+    .esquerda{
+        width:100px;
+        height:100px;
+        margin-right: 3em;
+        border-radius: 2px;
+       
+    }
+
+    .direita{
+        width:100px;
+        height: 100px;
+        margin-right: 3em;
+        gap:1em;
+        border-radius: 2px;
+    
+    }
+    .laranja{
+        width:100px;
+        height:100px;
+        margin-right: 3em;
+        border-radius: 2px;
+
+    }
+    .content,.content_esquerda{
+        margin-top: 1em ;
+        margin-left: 1em;
+        padding-bottom: 1em;
+        transition:1s;
+        }
+.carrossel{
+    
+    margin-top:19%;
+    height:60vh;
+    width:100vw;
+    border-radius: 5%;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border:2px solid;
+   
+}
+.carrossel .slide img{
+    height:100%;
+    width:100%;
+    
+}
+
+.navcarrossel{
+    bottom: 150px;
+    left: 950px;
+    display: flex;
+    margin-top: 0%;    
+    justify-content: center;
+    gap:2px;
+
+    
+
+}
+    .bar{
+        height:1.5vh;
+        width:1.5vw;
+        border: 2px solid var(--color--letras);
+        border-radius: 50%;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.5 ease;
+        position:relative;
+        display: flex;
+    }
+    .bar:hover{
+        background-color: var( --color--cabecalho);
+        
+    }
+    .input{
+        display:none;
+
+    }
+    .slides{
+        display:flex;
+        width:500%;
+        height:100%;
+       
+        
+    }
+    .slide{
+        width:20%;
+    }
+    
+    #f1:checked~.s1{
+        margin:0%;
+    }
+    #f2:checked~.s1{
+        margin:-10%;
+    }
+    #f3:checked~.s1{
+        margin:-20%;
+    }
+    #f4:checked~.s1{
+        margin:-30%;
+    }
+    #f5:checked~.s1{
+        margin:-40%;
+    }
+    .conteiner
+    {
+        background-color: #aed5b4;
+        width: 20vw;
+        height: 50vh;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        font-size: 110%;
+        
+
+      
+        }
+        .conteiner2{
+            background-color: #aed5b4;
+        width: 20rem;
+        height: 50vh;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        font-size: 110%;
+        padding-left: 1vw;
+        padding-right: 1vw;
+
+        }
+        .vermais{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align:justify;
+            font-size:150%;
+            background:color var(--color--cabecalho);
+            margin-left:5%
+
+        }
+        
+    
+    .planos{
+        margin-left: 10%;
+        margin-top: 25%;
+        display:flex;
+        flex-direction:row;
+        gap:10%;     
+        width:100%;
+        height:100%;     
+    }
+    .conteudodalista{
+        align-items: left;
+        justify-content: left;
+        margin-left: 0;
+    }
+       
+        
+        .setamais{
+            display:flex;
+            justify-content:center;
+           margin-top: 50%;
+           position:relative;
+           margin-left: 5%;
+           background-color: transparent;
+           border:none;
+           color:blue;
+           cursor: pointer;
+
+        }
+        .conteinermais{
+        justify-content: center;
+        background-color: #aed5b4;
+        width: 20vw;
+        height: 50vh;
+        border:2px solid var(--color--verdeescuro);
+        border-radius: 2% ;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        
+        }
+ .perguntasfrequentes 
+{
+    text-align: center;
+    color: #e6e6e6;
+    background-color: rgba(18, 156, 30, 0.863);
+    width: auto;
+    height: auto;
+    border-radius: 1vw;
+    margin-left: 45%;
+    margin-top: 10%;
+    font-size: 150%;
+    border:2px solid var(--color--verdeescuro);
+  
+
+}
+
+
+
+.escondida
+{
+    visibility: hidden;
+    height:0px;
+    transition: 0.1s 0.1s ease all;
+
+}
+.exibida
+{
+    visibility: visible;
+    height:auto;
+    transition: 0.1s 0.1s ease all;
+}
+[id*="Resp"]
+{
+    width:50%;
+    margin-left: 30%;
+    background-color: rgb(207, 206, 206);
+    border-radius: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+    border: rgb(0, 116, 25) dashed;
+    text-align: center;
+    font-size: 110%;
+}  
+.pergunta
+{
+    background-color:rgb(248, 240, 240);
+    color:rgb(0, 0, 0);
+    text-decoration:none;
+    text-align:center;
+    cursor:pointer;
+    width: 50%;
+    height:30%;
+    margin-left: 30%;
+    border-radius: 5%;
+    border: midnightblue dashed;
+    margin-bottom: 0.3%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+    
+}
+
+.frequentes{
+    margin-top: 10%;
+}
+.iconedecontato {
+    display: flex;  
+    gap:10px; 
+    justify-content: center;
+    position: relative;
+}
+.zapzap{
+    background:transparent;
+    border: none;
+    cursor:pointer;
+   
+}
+
+
+.insta{
+    background:transparent;
+    border: none;
+    cursor:pointer;
+   
+
+}
+.formasdecontato{
+    text-align: center;
+}
+.navegacao_planos a {
+    text-decoration: none;
+            color:var( --color--links);  
+            transition: 1s;
+            font-weight:bold;
+             background-color: var(--color--caixa_dos_link);
+             padding: 10px;
+             border-radius:10px ;
+}
+
+@media screen and (max-width:768px) {
+       .navcarrossel{
+        margin-top: -50%;
+       }
+        .content,
+        .content_esquerda,
+        .texto1,
+        .planos{
+            position:relative;
+            flex-direction: column;
+            
+        }
+    .carrossel{
+        margin-top:40%;
+      
+    }
+    .bar{
+        margin-top: 40%;
+       
+    }
+    .texto1{
+        font-size: 100%;
+    }
+    .planos
+     {
+       margin-top: 180%;
+       width:100%;
+       height:200%;  
+
+    }
+    .perguntasfrequentes {
+         margin-top: 20%;
+       
+    }
+    .setamais{
+        margin-right:60%;
+
+    }
+    .conteiner
+    {   background-color: #aed5b4;
+        width: 20rem;
+        height: 25rem;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        padding-left: 1vw;
+        padding-right: 1vw;
+        
+
+      
+        }
+        .conteiner2{
+            background-color: #aed5b4;
+        width: 20rem;
+        height: 25rem;
+        border:2px solid;
+        box-shadow: 1px 1px 25px var(--color--sombra);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        border-radius: 2%;
+        border:2px solid var(--color--verdeescuro);
+        padding-left: 1vw;
+        padding-right: 1vw;
+       
+
+        }
+        .conteinermais{
+            width: 50vw;
+            height: 50vh;
+        }
+        .vermais{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align:justify;
+            font-size:150%;
+            background:color var(--color--cabecalho);
+            padding-left: 1vw;
+            padding-right: 1vw;
+       
+
+        }
+        .frequentes{
+            margin-top: 20%;
+        }
+        .perguntasfrequentes{
+            margin-left:45%
+        }
+        .planos{
+            gap:2vh;
+        }
+    }
+    @media screen and (max-width:500px) {
+        .carrossel{
+            margin-top: 90%;
+        }
+        .planos{
+            margin-top: 500%;
+        }
+        .perguntasfrequentes {
+            margin-right: 5%;
+            margin-left: 5%;
+        }
+    }
+</style>
+<body>
+    <div class="header" id="header">
+        <button onclick="togglesidebar()"  class="botao_barrinha"id="botao_barrinha">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        </button>
+
+         <div class="logo_da_firma">
+           
+            <img src="logoprofisoria.png" class="img_logo_header">
+        </div>
+
+        <div class="navegacao_pagina"id="navegacao_pagina">
+            <button onclick="togglesidebar()" class="botao_barrinha">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                  </svg>
+             </button>
+               <a href ="#AmigosSaude" class="active">quem somos</a>
+               <a href ="#planos">Planos oferecidos</a>
+               <a href ="#contatos">nossos Contatos</a>
+               <a href ="#perguntas frequentes">perguntas frequentes</a>
+        </div>
+    </div>
+
+ <div class="carrossel">
+    <div class="slides">
+        <input class="input" type="radio" name="foto" id="f1" checked>
+        <input class="input" type="radio" name="foto" id="f2">
+        <input class="input" type="radio" name="foto" id="f3">
+        <input class="input" type="radio" name="foto" id="f4">
+        <input class="input" type="radio" name="foto" id="f5">
+
+        <div class="slide s1">
+            <img src="../imagem/Carrosel/Carro_1.jpg" >
+        </div>
+        <div class="slide">
+            <img src="../imagem/Carrosel/Carro_2.jpg">
+        </div>
+        <div class="slide">
+            <img src="../imagem/Carrosel/Carro_3.jpg" >
+        </div>
+        <div class="slide">
+            <img src="../imagem/Carrosel/Carro_4.jpg" >
+        </div>
+        <div class="slide">
+            <img src="../imagem/Carrosel/Carro_5.jpg" >
+        </div>
+    </div>
+ </div>
+ <div class="navcarrossel">
+    <label class="bar" for="f1"></label>
+    <label class="bar" for="f2"></label>
+    <label class="bar" for="f3"></label>
+    <label class="bar" for="f4"></label>
+    <label class="bar" for="f5"></label>
+ </div>
+
+    <div onclick="closesidebar()" class="texto1" id="texto1">
+        
+        <h1 id="AmigosSaude">Amigos Saude </h1>
+        <div class="content" >
+            <p>
+                Em 2015, Ana e Carlos, um casal apaixonado por animais, enfrentaram altos custos médicos para tratar seu cão, Max. Ana, veterinária, e Carlos, empresário, decidiram criar a Amigos Saúde para ajudar outros tutores a oferecerem cuidados médicos de qualidade para seus pets sem preocupações financeiras. Hoje, a Amigos Saúde é sinônimo de saúde e bem-estar para animais de estimação em todo o país.
+            </p>
+            <img  src="quadradoazul.png" class="direita"/> 
+        </div>
+        <hr class="hr"/>
+        <h2 class="subtitulos">Como trabalhamos</h2>
+        <div class="content_esquerda" >
+            
+            <img src="../quadradoamarelo.png" class="esquerda"/>
+            <p>A Amigos Saúde fortaleceu seu vínculo com a comunidade organizando eventos como feiras de adoção e campanhas de vacinação. Ana, veterinária, lidera workshops educativos para tutores, enquanto Carlos, com sua visão empresarial, busca parcerias com clínicas e fornecedores. A empresa também criou um programa de assistência social que oferece tratamentos gratuitos para pets de famílias de baixa renda, garantindo acesso a cuidados de qualidade. Com uma equipe dedicada, a Amigos Saúde se tornou referência nacional em cuidados veterinários, mantendo a missão de promover saúde e bem-estar para os animais. Ana e Carlos, inspirados pelo amor a seu pet Max, continuam a melhorar a vida dos animais e seus tutores em todo o país.A Amigos Saúde fortaleceu seu vínculo com a comunidade organizando eventos como feiras de adoção e campanhas de vacinação. Ana, veterinária, lidera workshops educativos para tutores, enquanto Carlos, com sua visão empresarial, busca parcerias com clínicas e fornecedores. A empresa também criou um programa de assistência social que oferece tratamentos gratuitos para pets de famílias de baixa renda, garantindo acesso a cuidados de qualidade. Com uma equipe dedicada, a Amigos Saúde se tornou referência nacional em cuidados veterinários, mantendo a missão de promover saúde e bem-estar para os animais. Ana e Carlos, inspirados pelo amor a seu pet Max, continuam a melhorar a vida dos animais e seus tutores em todo o país.
+            </p>
+        </div>
+        <hr/>
+        <h2 class="subtitulos"> Sobre os Planos</h2>
+        <div class="content">
+            <p>
+                Os planos de saúde pet da Amigos Saúde oferecem uma cobertura completa para garantir o bem-estar e a saúde dos seus animais de estimação. Com planos acessíveis e personalizados, a agência proporciona acesso a uma rede de clínicas e profissionais especializados, oferecendo atendimento de qualidade em consultas, exames, cirurgias e tratamentos diversos. Além disso, os planos contam com a tranquilidade de um suporte contínuo, permitindo que os tutores possam focar no cuidado e no conforto de seus pets sem se preocupar com imprevistos financeiros. Com a Amigos Saúde, seu pet recebe o melhor em atendimento veterinário, com a confiança e a segurança que você e seu amigo de quatro patas merecem!
+            </p>
+            <img src="../imagem/quadrado laranja.png" class="laranja"/>
+            
+        </div>
+        <hr/>
+    </div>
+    <section  class="planos" id="planos">
+        <section class="conteiner">
+        <div class= "conteudodalista">
+           
+            <ul id="#planos"><h2> Plano Básico</h2></ul>
+            <br>
+            <li>Preço:R$ 49,90/mês</li>
+            <br>
+             <h3>Beneficios:</h3>
+             <br>
+            <li>Consultas ilimitadas</li>
+            <br>
+            <li>Vacinação básica</li>
+            <br>
+            <li>Suporte 24h </li>
+           <br>
+                <div  class="navegacao_planos">
+                    <a href ="#">contratar plano</a>
+             </div>
+        </div>
+        </section>
+        <section class="conteiner2">
+            <div  class= "conteudodalista">
+                <ul><h2>Plano Intermediário</h2></ul>
+                <br>
+                <li>Preço:R$ 139,90/mês</li>
+                <br>
+                <h3>Beneficios:</h3>
+                <br>
+                <li>Consultas ilimitadas</li>
+                <br>
+                <li>Vacinação completa</li>
+                <br>
+                <li>Exames laboratoriais anuais</li>
+                <br>
+                <li>Descontos em medicamentos e produtos</li> 
+                <br>
+                <div class="navegacao_planos">
+                    <a href ="#">contratar plano</a>
+                </div>
+                
+            </div>
+            </section>
+            <section class="conteinermais">
+                <div class="vermais">
+                    <ul><h1 class="vvv">Ver mais</h1>
+                        <p class="pp"></p>
+                        <button class="setamais">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                              </svg>
+                        </button>
+                        </ul>
+                   
+        
+                </div>
+                </section>
+    <div>
+        </section class="frequentes" >
+
+        <h2 class=" perguntasfrequentes">Perguntas Frequentes</h2>
+        <br>
+        <div id="p1" onClick="Exibe_Resposta('Resp1','p1')" class="pergunta">Quais são os sintomas de doenças comuns em pets?</div>
+        <div id="Resp1" class="escondida">
+            Os sintomas podem variar, mas alguns sinais comuns incluem letargia, perda de apetite.
+
+            vÔmito, diarreia, tosse, espirros, coceira excessiva, mudanças no comportamento e dificuldade para respirar. Se você notar qualquer um desses sintomas, é importante consultar um veterinário.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p2" onClick="Exibe_Resposta('Resp2')" class="pergunta">Com que frequência devo levar meu animal para consultas veterinárias?</div>
+        <div id="Resp2" class="escondida">
+            Em geral, recomenda-se levar o seu pet ao veterinário pelo menos uma vez por ano para exames de rotina. Animais mais velhos ou com condições de saúde específicas podem precisar de consultas mais frequentes. Sempre siga as orientações do seu veterinário.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p3" onClick="Exibe_Resposta('Resp3')" class="pergunta">Qual é a melhor dieta para meu animal de estimação?
+        </div>
+        <div id="Resp3" class="escondida">
+            A dieta ideal varia de acordo com a espécie, idade, peso e condição de saúde do seu animal. É importante escolher ração de qualidade e, se possivel, consultar um veterinário para uma dieta balanceada que atenda às necessidades especificas do seu pet.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p4" onClick="Exibe_Resposta('Resp4')" class="pergunta">Como posso prevenir pulgas e carrapatos?</div>
+        <div id="Resp4" class="escondida">
+            A prevenção inclui o uso de antiparasitários recomendados pelo veterinario, banhos regulares e manter o ambiente limpo. Verifique seu pet frequentemente, especialmente após passeios em áreas com vegetação aita.
+        </div>
+        <p></p>
+        <p></p>
+        <div id="p5" onClick="Exibe_Resposta('Resp5')" class="pergunta">Meu pet está se comportando de maneira estranha. O que posso fazer?</div>
+        <div id="Resp5" class="escondida">
+            Mudanças no comportamento podem indicar problemas de saúde ou estresse. Observe o que pode estar causando a mudança e, se os sintomas persistirem ou se o comportamento for preocupante, consulte um veterinário para uma avaliação adequada.
+        </div>
+        <p></p>
+        <p></p>
+        <br/>
+    </section>
+    </div>
+    <div class="contatosicones">
+            <div class="contatos">
+                <h2 class="formasdecontato">Formas de contato</h2>
+            </div>
+            <br>
+                <div class="iconedecontato">
+                        <button class="zapzap">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                            </svg>
+                    </button>
+                <div class="iconedecontato">
+                    <button class="insta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                    </svg>
+                    </button>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <script language="JavaScript">
+        var header= document.getElementById("header");
+        var navegacaopagina= document.getElementById("navegacao_pagina");
+        var texto1= document.getElementById("texto1");
+        var ShowSidebar = false;
+        
+        function togglesidebar()
+        {
+        ShowSidebar = !ShowSidebar;
+        if(ShowSidebar)     
+        {
+            navegacaopagina.style.marginLeft='-10vw';
+            navegacaopagina.style.animationName='ShowSidebar';
+           
+        }
+        else
+        {
+            navegacaopagina.style.marginLeft="-100vw";
+            navegacaopagina.style.animationName='';
+           
+        }
+        }
+
+        function closesidebar()
+        {
+        if(ShowSidebar){
+            togglesidebar();
+        }
+        }
+
+        withindow.addeventlistener('resize', function(event){
+        if(window.innerWidth >768 && ShowSidebar){
+            togglesidebar();
+        }});
+        
+    
+    
+    
+
+    </script>
+ 
+
+<script language="JavaScript">
+    let contador = 1;
+
+setInterval(function(){
+    document.getElementById('f'+ contador).checked = true;
+    contador++;
+    if(contador>5){
+        contador=1
+    }
+
+}, 5000);
+</script>
+<script>
+    function Exibe_Resposta(x,y)
+{
+    if (document.getElementById(x).className.indexOf("exibida") == -1)
+    {
+        document.getElementById(x).className = document.getElementById(x).className.replace("escondida","exibida");
+        document.getElementById(y).style.backgroundColor='#000000';
+        document.getElementById(y).style.color='#ffffff';
+    }
+    else
+    {
+        document.getElementById(x).className = document.getElementById(x).className.replace("exibida","escondida");
+        document.getElementById(y).style.backgroundColor='#ffffff';
+        document.getElementById(y).style.color='#000000';
+    }
+}
+function Troca_cor()
+{
+    document=document.getElementById("cor").value;   
+}
+</script>
+</body>
+</html>
